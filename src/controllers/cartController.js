@@ -24,7 +24,7 @@ const updateCart = (req, res) => {
 const removeFromCart = (req, res) => {
     try {
       const { itemId, userId } = req.body;
-      const result = cartService.addToCart(userId, item);
+      const result = cartService.removeFromCart(userId, itemId);
       res.json({ message: result });
     } catch (error) {
       res.status(400).json({ message: error.message });
