@@ -10,6 +10,27 @@ const addToCart = (req, res) => {
   }
 };
 
+const updateCart = (req, res) => {
+    try {
+      const { userId, item } = req.body;
+      const result = cartService.updateCart(userId, item);
+      res.json({ message: result });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  };
+
+
+const removeFromCart = (req, res) => {
+    try {
+      const { itemId, userId } = req.body;
+      const result = cartService.addToCart(userId, item);
+      res.json({ message: result });
+    } catch (error) {
+      res.status(400).json({ message: error.message });
+    }
+  };
+
 const checkout = (req, res) => {
   try {
     const { userId, discountCode } = req.body;
@@ -20,4 +41,4 @@ const checkout = (req, res) => {
   }
 };
 
-module.exports = { addToCart, checkout };
+module.exports = { addToCart, checkout, removeFromCart, updateCart };
